@@ -1,8 +1,15 @@
 const {getTitle} = require('./view')
+const {inputForm, listForm} = require('./view')
+const {printTable} = require('console-table-printer')
 
-function app(state,update,view){
+async function app(state,update,view){
+    const {model, currentView} = state
+    const {title, table} = currentView
     console.clear
-    console.log(getTitle())
+    console.log(title)
+    printTable(table)
+
+    const{input} = await inputForm(model)
 }
 
 module.exports = {
