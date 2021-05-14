@@ -33,15 +33,29 @@ function inputForm(model){
     return inquirer.prompt([
         {
             name: 'input1',
-            type: 'input',
+            type: 'input1',
             message: message1,
             default: input,
+            validate: function(value){
+                if(value < 0){
+                    return 'Enter a positive value'
+                } else {
+                    return true
+                }
+            }
         },
         {
             name: 'input2',
-            type: 'input',
+            type: 'input2',
             message: message2,
             default: input,
+            validate: function(value){
+                if(value > 100 || value < 0){
+                    return 'Enter a value from 0 to 100'
+                } else {
+                    return true
+                }
+            }
         }
     ])
 }
