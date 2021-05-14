@@ -32,10 +32,9 @@ function inputForm(model){
     const message2 = 'Tip(%)? '
     return inquirer.prompt([
         {
-            name: 'input1',
-            type: 'input1',
+            name: 'billAmount',
+            type: 0,
             message: message1,
-            default: input,
             validate: function(value){
                 if(value < 0){
                     return 'Enter a positive value'
@@ -45,10 +44,9 @@ function inputForm(model){
             }
         },
         {
-            name: 'input2',
-            type: 'input2',
+            name: 'percentage',
+            type: 0,
             message: message2,
-            default: input,
             validate: function(value){
                 if(value > 100 || value < 0){
                     return 'Enter a value from 0 to 100'
@@ -56,26 +54,6 @@ function inputForm(model){
                     return true
                 }
             }
-        }
-    ])
-}
-
-function listForm(model){
-    const {input} = model
-    const message1 = 'Bill Amount? '
-    const message2 = 'Tip(%)? '
-    return inquirer.prompt([
-        {
-            name: 'input1',
-            type: 'list',
-            message: message1,
-            default: input,
-        },
-        {
-            name: 'input2',
-            type: 'list',
-            message: message2,
-            default: input,
         }
     ])
 }
@@ -90,5 +68,4 @@ function view(model){
 module.exports = {
     view, 
     inputForm,
-    listForm
 }
